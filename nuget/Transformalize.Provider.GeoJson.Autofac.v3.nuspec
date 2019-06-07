@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Transformalize.Provider.GeoJson.Autofac.v3</id>
+    <version>0.6.9-beta</version>
+    <title>GeoJson for Transformalize Autofac Module</title>
+    <authors>Dale Newman</authors>
+    <owners>Dale Newman</owners>
+    <projectUrl>https://github.com/dalenewman/Transformalize</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>GeoJson for Transformalize Autofac Module</description>
+    <releaseNotes>moved to own solution</releaseNotes>
+    <copyright>Copyright 2013-2019</copyright>
+    <tags>etl</tags>
+    <dependencies>
+      <group targetFramework="net462">
+        <dependency id="Autofac" version="3.5.2" />
+        <dependency id="Transformalize.Provider.GeoJson" version="0.6.9-beta" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\src\Transformalize.Provider.GeoJson.Autofac.v3\bin\Release\Transformalize.Provider.GeoJson.Autofac.v3.dll" target="lib\net462\Transformalize.Provider.GeoJson.Autofac.v3.dll" />
+  </files>
+</package>

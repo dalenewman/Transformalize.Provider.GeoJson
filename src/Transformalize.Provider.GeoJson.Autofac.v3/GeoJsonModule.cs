@@ -16,9 +16,11 @@
 // limitations under the License.
 #endregion
 
+using System.IO;
 using System.Linq;
 using System.Web;
 using Autofac;
+using Newtonsoft.Json;
 using Transformalize.Configuration;
 using Transformalize.Context;
 using Transformalize.Contracts;
@@ -46,32 +48,31 @@ namespace Transformalize.Providers.GeoJson.Autofac {
 
          // geoJson input not supported yet
          foreach (var entity in _process.Entities.Where(e => _process.Connections.First(c => c.Name == e.Connection).Provider == "geojson")) {
-
             // input version detector
             builder.RegisterType<NullInputProvider>().Named<IInputProvider>(entity.Key);
-
             // input read
             builder.Register<IRead>(ctx => {
                var input = ctx.ResolveNamed<InputContext>(entity.Key);
                return new NullReader(input, false);
             }).Named<IRead>(entity.Key);
-
          }
 
          if (_process.Output().Provider == "geojson") {
-
-            foreach (var entity in _process.Entities) {
-
-               // ENTITY WRITER
-               builder.Register<IWrite>(ctx => {
-                  var output = ctx.ResolveNamed<OutputContext>(entity.Key);
-                  if (output.Connection.Stream) {
-                     return new GeoJsonMinimalProcessStreamWriter(output, HttpContext.Current.Response.OutputStream);
-                  } else {
+            if (_process.Output().Stream) {
+               var writer = new JsonTextWriter(new StreamWriter(HttpContext.Current.Response.OutputStream));
+               foreach (var entity in _process.Entities) {
+                  builder.Register<IWrite>(ctx => {
+                     var output = ctx.ResolveNamed<OutputContext>(entity.Key);
+                     return new GeoJsonMinimalProcessStreamWriter(output, writer);
+                  }).Named<IWrite>(entity.Key);
+               }
+            } else {
+               foreach (var entity in _process.Entities) {
+                  builder.Register<IWrite>(ctx => {
+                     var output = ctx.ResolveNamed<OutputContext>(entity.Key);
                      return new GeoJsonFileWriter(output);
-                  }
-
-               }).Named<IWrite>(entity.Key);
+                  }).Named<IWrite>(entity.Key);
+               }
             }
          }
       }

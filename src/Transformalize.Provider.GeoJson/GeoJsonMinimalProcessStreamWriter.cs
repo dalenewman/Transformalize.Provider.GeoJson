@@ -37,6 +37,7 @@ namespace Transformalize.Providers.GeoJson {
       private readonly bool _hasBatchValue;
       private readonly IContext _context;
       private readonly JsonWriter _jsonWriter;
+      private readonly Field[] _properties;
 
       public GeoJsonMinimalProcessStreamWriter(IContext context, JsonWriter jsonWriter) {
          _context = context;
@@ -56,6 +57,8 @@ namespace Transformalize.Providers.GeoJson {
          _hasSymbol = _symbolField != null;
          _hasDescription = _descriptionField != null;
          _hasBatchValue = _batchField != null;
+
+         _properties = fields.Where(f => f.Property).Except(new Field[] { _descriptionField, _colorField, _symbolField, _batchField }.Where(f => f != null)).ToArray();
 
       }
 
@@ -113,6 +116,12 @@ namespace Transformalize.Providers.GeoJson {
                var symbol = row[_symbolField].ToString();
                _jsonWriter.WritePropertyName("marker-symbol");
                _jsonWriter.WriteValue(symbol);
+            }
+
+            foreach(var field in _properties) {
+               var name = field.Label == string.Empty ? field.Alias : field.Label;
+               _jsonWriter.WritePropertyName(name);
+               _jsonWriter.WriteValue(row[field]);
             }
 
             _jsonWriter.WriteEndObject(); //properties

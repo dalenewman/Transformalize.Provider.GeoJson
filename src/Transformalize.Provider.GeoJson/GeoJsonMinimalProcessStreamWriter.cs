@@ -95,11 +95,9 @@ namespace Transformalize.Providers.GeoJson {
             _jsonWriter.WritePropertyName("properties");
             _jsonWriter.WriteStartObject(); //properties
 
-            _jsonWriter.WritePropertyName("description");
             if (_hasDescription) {
+               _jsonWriter.WritePropertyName("description");
                _jsonWriter.WriteValue(row[_descriptionField]);
-            } else {
-               _jsonWriter.WriteValue("add geojson-description to output");
             }
 
             if (_hasBatchValue) {

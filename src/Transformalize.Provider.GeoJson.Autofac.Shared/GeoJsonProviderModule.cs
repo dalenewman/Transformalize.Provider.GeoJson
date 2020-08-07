@@ -37,6 +37,8 @@ namespace Transformalize.Providers.GeoJson.Autofac {
       private readonly Stream _stream;
       private const string GeoJson = "geojson";
 
+      public bool UseAsyncMethods { get; set; }
+
       public IPropertyRepository PropertyRepository { get; set; } = new PropertyRepository();
 
       /// <summary>
@@ -95,7 +97,11 @@ namespace Transformalize.Providers.GeoJson.Autofac {
                   foreach (var entity in _process.Entities) {
                      builder.Register<IWrite>(ctx => {
                         var output = ctx.ResolveNamed<OutputContext>(entity.Key);
-                        return new GeoJsonMinimalProcessStreamWriter(output, writer);
+                        if (UseAsyncMethods) {
+                           return new GeoJsonMinimalProcessStreamWriter(output, writer);
+                        } else {
+                           return new GeoJsonMinimalProcessStreamWriterSync(output, writer);
+                        }
                      }).Named<IWrite>(entity.Key);
                   }
                } else {

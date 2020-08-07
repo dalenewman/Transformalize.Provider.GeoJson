@@ -1,21 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Transformalize.Providers.GeoJson</RootNamespace>
     <AssemblyName>Transformalize.Provider.GeoJson</AssemblyName>
-    <Version>0.8.15-beta</Version>
+    <Version>0.8.22-beta</Version>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>D:\Code\Transformalize.Provider.GeoJson\src\Transformalize.Provider.GeoJson.Standard.2.0\Transformalize.Provider.GeoJson.xml</DocumentationFile>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="Transformalize" Version="0.8.14-beta" />
+    <PackageReference Include="Transformalize" Version="0.8.22-beta" />
   </ItemGroup>
-
   <Import Project="..\Transformalize.Provider.GeoJson.Shared\Transformalize.Provider.GeoJson.Shared.projitems" Label="Shared" />
-
 </Project>

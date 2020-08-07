@@ -27,8 +27,10 @@ namespace Transformalize.Providers.GeoJson {
    /// </summary>
    public class GeoJsonFileWriter : IWrite {
       private readonly OutputContext _context;
-      private readonly IWrite _streamWriter;
+      private IWrite _streamWriter;
       private readonly MemoryStream _stream;
+
+      public bool UseAsyncMethods { get; set; }
 
       /// <summary>
       /// Given an output context, prepare to write a GeoJson file.
@@ -37,7 +39,6 @@ namespace Transformalize.Providers.GeoJson {
       public GeoJsonFileWriter(OutputContext context) {
          _context = context;
          _stream = new MemoryStream();
-         _streamWriter = new GeoJsonStreamWriter(context, _stream);
       }
 
       /// <summary>
@@ -45,6 +46,9 @@ namespace Transformalize.Providers.GeoJson {
       /// </summary>
       /// <param name="rows">transformalize rows</param>
       public void Write(IEnumerable<IRow> rows) {
+
+         _streamWriter = UseAsyncMethods ? (IWrite) new GeoJsonStreamWriter(_context, _stream) : new GeoJsonStreamWriterSync(_context, _stream);
+
          using (var fileStream = File.Create(_context.Connection.File)) {
             _streamWriter.Write(rows);
             _stream.Seek(0, SeekOrigin.Begin);

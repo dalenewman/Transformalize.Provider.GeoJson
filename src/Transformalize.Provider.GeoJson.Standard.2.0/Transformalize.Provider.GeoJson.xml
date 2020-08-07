@@ -93,6 +93,24 @@
             </summary>
             <param name="rows">transformalize rows</param>
         </member>
+        <member name="T:Transformalize.Providers.GeoJson.GeoJsonStreamWriterSync">
+            <summary>
+            It writes data as GeoJson to a stream, converting non-geojson stuff to html in the description
+            </summary>
+        </member>
+        <member name="M:Transformalize.Providers.GeoJson.GeoJsonStreamWriterSync.#ctor(Transformalize.Contracts.IContext,System.IO.Stream)">
+            <summary>
+            Prepare to write GeoJson to a stream
+            </summary>
+            <param name="context">a transformalize context</param>
+            <param name="stream">whatever stream you want to write to</param>
+        </member>
+        <member name="M:Transformalize.Providers.GeoJson.GeoJsonStreamWriterSync.Write(System.Collections.Generic.IEnumerable{Transformalize.Contracts.IRow})">
+            <summary>
+            Write rows to as GeoJson to a stream
+            </summary>
+            <param name="rows"></param>
+        </member>
         <member name="T:Transformalize.Providers.GeoJson.GeoJsonStreamWriter">
             <summary>
             It writes data as GeoJson to a stream, converting non-geojson stuff to html in the description

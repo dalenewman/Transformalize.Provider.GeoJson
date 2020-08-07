@@ -3,7 +3,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Transformalize.Providers.GeoJson</RootNamespace>
     <AssemblyName>Transformalize.Provider.GeoJson</AssemblyName>
-    <Version>0.8.22-beta</Version>
+    <Version>0.8.24-beta</Version>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>D:\Code\Transformalize.Provider.GeoJson\src\Transformalize.Provider.GeoJson.Standard.2.0\Transformalize.Provider.GeoJson.xml</DocumentationFile>

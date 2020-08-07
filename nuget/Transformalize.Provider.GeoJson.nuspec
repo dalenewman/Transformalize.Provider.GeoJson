@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Transformalize.Provider.GeoJson</id>
-    <version>0.8.22-beta</version>
+    <version>0.8.24-beta</version>
     <title>GeoJson for Transformalize</title>
     <authors>Dale Newman</authors>
     <owners>Dale Newman</owners>

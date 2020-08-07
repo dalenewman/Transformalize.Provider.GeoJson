@@ -108,7 +108,7 @@ namespace Transformalize.Providers.GeoJson.Autofac {
                   foreach (var entity in _process.Entities) {
                      builder.Register<IWrite>(ctx => {
                         var output = ctx.ResolveNamed<OutputContext>(entity.Key);
-                        return new GeoJsonFileWriter(output);
+                        return new GeoJsonFileWriter(output) { UseAsyncMethods = UseAsyncMethods };
                      }).Named<IWrite>(entity.Key);
                   }
                }

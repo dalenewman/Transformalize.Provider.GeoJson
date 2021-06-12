@@ -41,6 +41,7 @@ namespace Transformalize.Providers.GeoJson {
       private readonly bool _hasSymbol;
       private readonly bool _hasDescription;
       private readonly bool _hasBatchValue;
+      private readonly IContext _context;
 
       /// <summary>
       /// Given a context, and a stream, prepare to write GeoJson
@@ -48,7 +49,7 @@ namespace Transformalize.Providers.GeoJson {
       /// <param name="context">a transformalize context</param>
       /// <param name="stream">a stream to write to</param>
       public GeoJsonMinimalEntityStreamWriter(IContext context, Stream stream) {
-
+         _context = context;
          _stream = stream;
          var fields = context.GetAllEntityFields().ToArray();
 
@@ -131,8 +132,13 @@ namespace Transformalize.Providers.GeoJson {
             jw.WriteEndObjectAsync(); //properties
 
             jw.WriteEndObjectAsync(); //feature
-         }
 
+            _context.Entity.Inserts++;
+
+            if (_context.Entity.Inserts % 50 == 0) {
+               jw.FlushAsync();
+            }
+         }
 
          jw.WriteEndArrayAsync(); //features
 

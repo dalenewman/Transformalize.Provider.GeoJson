@@ -137,6 +137,12 @@ namespace Transformalize.Providers.GeoJson {
             _jw.WriteEndObjectAsync(); //properties
 
             _jw.WriteEndObjectAsync(); //feature
+
+            _context.Entity.Inserts++;
+
+            if (_context.Entity.Inserts % 50 == 0) {
+               _jw.FlushAsync();
+            }
          }
          if (Equals(_context.Process.Entities.Last(), _context.Entity)) {
             _jw.WriteEndArrayAsync(); //features

@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Transformalize.Provider.GeoJson.Autofac</id>
-    <version>0.8.25-beta</version>
+    <version>0.8.27-beta</version>
     <title>GeoJsn for Transformalize Autofac Module</title>
     <authors>Dale Newman</authors>
     <owners>Dale Newman</owners>
@@ -15,11 +15,11 @@
     <dependencies>
       <group targetFramework="net462">
         <dependency id="Transformalize.Container.Autofac" version="0.8.35-beta" />
-        <dependency id="Transformalize.Provider.GeoJson" version="0.8.25-beta" />
+        <dependency id="Transformalize.Provider.GeoJson" version="0.8.27-beta" />
       </group>
       <group targetFramework="netstandard2.0">
         <dependency id="Transformalize.Container.Autofac" version="0.8.35-beta" />
-        <dependency id="Transformalize.Provider.GeoJson" version="0.8.25-beta" />
+        <dependency id="Transformalize.Provider.GeoJson" version="0.8.27-beta" />
       </group>
     </dependencies>
   </metadata>

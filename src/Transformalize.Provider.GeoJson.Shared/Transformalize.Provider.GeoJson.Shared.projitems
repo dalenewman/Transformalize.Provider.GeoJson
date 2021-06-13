@@ -12,6 +12,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)GeoJsonFileWriter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GeoJsonMinimalEntityStreamWriterSync.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GeoJsonMinimalEntityStreamWriter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GeoJsonMinimalProcessStreamWriter2.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GeoJsonMinimalProcessStreamWriterSync.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GeoJsonMinimalProcessStreamWriter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GeoJsonStreamWriterSync.cs" />

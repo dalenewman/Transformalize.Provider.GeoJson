@@ -25,6 +25,7 @@ using Transformalize.Containers.Autofac;
 using Transformalize.Context;
 using Transformalize.Contracts;
 using Transformalize.Nulls;
+using System.Text.Json;
 
 namespace Transformalize.Providers.GeoJson.Autofac {
 
@@ -93,14 +94,19 @@ namespace Transformalize.Providers.GeoJson.Autofac {
          if (outputConnection != null) {
             if (outputConnection.Provider == GeoJson) {
                if (outputConnection.Stream) {
-                  var writer = new JsonTextWriter(new StreamWriter(_stream));
+                  // var writer = new JsonTextWriter(new StreamWriter(_stream));
+
+                  var options = new JsonWriterOptions() { Indented = outputConnection.Format == "json" };
+                  var writer = new Utf8JsonWriter(_stream, options);
+
                   foreach (var entity in _process.Entities) {
                      builder.Register<IWrite>(ctx => {
                         var output = ctx.ResolveNamed<OutputContext>(entity.Key);
                         if (UseAsyncMethods) {
-                           return new GeoJsonMinimalProcessStreamWriter(output, writer);
+                           return new GeoJsonMinimalProcessStreamWriter2(output, writer);
                         } else {
-                           return new GeoJsonMinimalProcessStreamWriterSync(output, writer);
+                           // may need sync version
+                           return new GeoJsonMinimalProcessStreamWriter2(output, writer);
                         }
                      }).Named<IWrite>(entity.Key);
                   }

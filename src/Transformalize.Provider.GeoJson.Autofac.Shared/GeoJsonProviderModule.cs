@@ -94,19 +94,19 @@ namespace Transformalize.Providers.GeoJson.Autofac {
          if (outputConnection != null) {
             if (outputConnection.Provider == GeoJson) {
                if (outputConnection.Stream) {
-                  // var writer = new JsonTextWriter(new StreamWriter(_stream));
+                  var writer = new JsonTextWriter(new StreamWriter(_stream));
 
-                  var options = new JsonWriterOptions() { Indented = outputConnection.Format == "json" };
-                  var writer = new Utf8JsonWriter(_stream, options);
+                  //var options = new JsonWriterOptions() { Indented = outputConnection.Format == "json" };
+                  //var writer = new Utf8JsonWriter(_stream, options);
 
                   foreach (var entity in _process.Entities) {
                      builder.Register<IWrite>(ctx => {
                         var output = ctx.ResolveNamed<OutputContext>(entity.Key);
                         if (UseAsyncMethods) {
-                           return new GeoJsonMinimalProcessStreamWriter2(output, writer);
+                           return new GeoJsonMinimalProcessStreamWriter(output, writer);
                         } else {
                            // may need sync version
-                           return new GeoJsonMinimalProcessStreamWriter2(output, writer);
+                           return new GeoJsonMinimalProcessStreamWriterSync(output, writer);
                         }
                      }).Named<IWrite>(entity.Key);
                   }

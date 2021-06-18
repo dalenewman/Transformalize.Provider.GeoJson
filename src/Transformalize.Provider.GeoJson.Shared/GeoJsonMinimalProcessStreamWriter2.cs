@@ -131,16 +131,15 @@ namespace Transformalize.Providers.GeoJson {
 
             _context.Entity.Inserts++;
 
-            if (_context.Entity.Inserts % 50 == 0) {
-               _jw.FlushAsync();
-            }
+            _jw.FlushAsync().ConfigureAwait(false);
          }
+
          if (Equals(_context.Process.Entities.Last(), _context.Entity)) {
             _jw.WriteEndArray(); //features
             _jw.WriteEndObject(); //root
          }
 
-         _jw.FlushAsync();
+         _jw.FlushAsync().ConfigureAwait(false);
 
       }
 

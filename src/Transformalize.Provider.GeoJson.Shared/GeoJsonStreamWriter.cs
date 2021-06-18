@@ -76,43 +76,43 @@ namespace Transformalize.Providers.GeoJson {
          var textWriter = new StreamWriter(_stream);
          var jw = new JsonTextWriter(textWriter);
 
-         jw.WriteStartObjectAsync(); //root
+         jw.WriteStartObjectAsync().ConfigureAwait(false); //root
 
-         jw.WritePropertyNameAsync("type");
-         jw.WriteValueAsync("FeatureCollection");
+         jw.WritePropertyNameAsync("type").ConfigureAwait(false);
+         jw.WriteValueAsync("FeatureCollection").ConfigureAwait(false);
 
-         jw.WritePropertyNameAsync("features");
-         jw.WriteStartArrayAsync();  //features
+         jw.WritePropertyNameAsync("features").ConfigureAwait(false);
+         jw.WriteStartArrayAsync().ConfigureAwait(false);  //features
 
          var tableBuilder = new StringBuilder();
 
          foreach (var row in rows) {
 
-            jw.WriteStartObjectAsync(); //feature
-            jw.WritePropertyNameAsync("type");
-            jw.WriteValueAsync("Feature");
-            jw.WritePropertyNameAsync("geometry");
-            jw.WriteStartObjectAsync(); //geometry 
-            jw.WritePropertyNameAsync("type");
-            jw.WriteValueAsync("Point");
+            jw.WriteStartObjectAsync().ConfigureAwait(false); //feature
+            jw.WritePropertyNameAsync("type").ConfigureAwait(false);
+            jw.WriteValueAsync("Feature").ConfigureAwait(false);
+            jw.WritePropertyNameAsync("geometry").ConfigureAwait(false);
+            jw.WriteStartObjectAsync().ConfigureAwait(false); //geometry 
+            jw.WritePropertyNameAsync("type").ConfigureAwait(false);
+            jw.WriteValueAsync("Point").ConfigureAwait(false);
 
-            jw.WritePropertyNameAsync("coordinates");
-            jw.WriteStartArrayAsync();
-            jw.WriteValueAsync(row[_longitudeField]);
-            jw.WriteValueAsync(row[_latitudeField]);
-            jw.WriteEndArrayAsync();
+            jw.WritePropertyNameAsync("coordinates").ConfigureAwait(false);
+            jw.WriteStartArrayAsync().ConfigureAwait(false);
+            jw.WriteValueAsync(row[_longitudeField]).ConfigureAwait(false);
+            jw.WriteValueAsync(row[_latitudeField]).ConfigureAwait(false);
+            jw.WriteEndArrayAsync().ConfigureAwait(false);
 
-            jw.WriteEndObjectAsync(); //geometry
+            jw.WriteEndObjectAsync().ConfigureAwait(false); //geometry
 
-            jw.WritePropertyNameAsync("properties");
-            jw.WriteStartObjectAsync(); //properties
+            jw.WritePropertyNameAsync("properties").ConfigureAwait(false);
+            jw.WriteStartObjectAsync().ConfigureAwait(false); //properties
 
             foreach (var field in _propertyFields) {
-               jw.WritePropertyNameAsync(field.Label);
-               jw.WriteValueAsync(field.Format == string.Empty ? row[field] : string.Format(string.Concat("{0:", field.Format, "}"), row[field]));
+               jw.WritePropertyNameAsync(field.Label).ConfigureAwait(false);
+               jw.WriteValueAsync(field.Format == string.Empty ? row[field] : string.Format(string.Concat("{0:", field.Format, "}"), row[field])).ConfigureAwait(false);
             }
 
-            jw.WritePropertyNameAsync("description");
+            jw.WritePropertyNameAsync("description").ConfigureAwait(false);
             tableBuilder.Clear();
             tableBuilder.AppendLine("<table class=\"table table-striped table-condensed\">");
             foreach (var field in _propertyFields.Where(f => f.Alias != "BatchValue")) {
@@ -129,22 +129,22 @@ namespace Transformalize.Providers.GeoJson {
                tableBuilder.AppendLine("</tr>");
             }
             tableBuilder.AppendLine("</table>");
-            jw.WriteValueAsync(tableBuilder.ToString());
+            jw.WriteValueAsync(tableBuilder.ToString()).ConfigureAwait(false);
 
             if (_hasStyle) {
                if (_colorField != null) {
-                  jw.WritePropertyNameAsync("marker-color");
+                  jw.WritePropertyNameAsync("marker-color").ConfigureAwait(false);
                   var color = row[_colorField].ToString().TrimStart('#').Right(6);
-                  jw.WriteValueAsync("#" + (color.Length == 6 ? color : "0080ff"));
+                  jw.WriteValueAsync("#" + (color.Length == 6 ? color : "0080ff")).ConfigureAwait(false);
                }
 
                if (_sizeField != null) {
-                  jw.WritePropertyNameAsync("marker-size");
+                  jw.WritePropertyNameAsync("marker-size").ConfigureAwait(false);
                   var size = row[_sizeField].ToString().ToLower();
                   if (_sizes.Contains(size)) {
-                     jw.WriteValueAsync(size);
+                     jw.WriteValueAsync(size).ConfigureAwait(false);
                   } else {
-                     jw.WriteValueAsync(_scales.ContainsKey(size) ? _scales[size] : "medium");
+                     jw.WriteValueAsync(_scales.ContainsKey(size) ? _scales[size] : "medium").ConfigureAwait(false);
                   }
                }
 
@@ -153,27 +153,25 @@ namespace Transformalize.Providers.GeoJson {
                   if (symbol.StartsWith("http")) {
                      symbol = "marker";
                   }
-                  jw.WritePropertyNameAsync("marker-symbol");
-                  jw.WriteValueAsync(symbol);
+                  jw.WritePropertyNameAsync("marker-symbol").ConfigureAwait(false);
+                  jw.WriteValueAsync(symbol).ConfigureAwait(false);
                }
 
             }
 
-            jw.WriteEndObjectAsync(); //properties
+            jw.WriteEndObjectAsync().ConfigureAwait(false); //properties
 
-            jw.WriteEndObjectAsync(); //feature
+            jw.WriteEndObjectAsync().ConfigureAwait(false); //feature
 
             _context.Entity.Inserts++;
 
-            if (_context.Entity.Inserts % 50 == 0) {
-               jw.FlushAsync();
-            }
+            jw.FlushAsync().ConfigureAwait(false);
          }
 
-         jw.WriteEndArrayAsync(); //features
+         jw.WriteEndArrayAsync().ConfigureAwait(false); //features
 
-         jw.WriteEndObjectAsync(); //root
-         jw.FlushAsync();
+         jw.WriteEndObjectAsync().ConfigureAwait(false); //root
+         jw.FlushAsync().ConfigureAwait(false);
 
       }
    }

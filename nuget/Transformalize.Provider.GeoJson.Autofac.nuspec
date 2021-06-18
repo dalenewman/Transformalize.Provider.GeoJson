@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Transformalize.Provider.GeoJson.Autofac</id>
-    <version>0.8.27-beta</version>
+    <version>0.8.30-beta</version>
     <title>GeoJsn for Transformalize Autofac Module</title>
     <authors>Dale Newman</authors>
     <owners>Dale Newman</owners>
@@ -10,16 +10,16 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>GeoJson for Transformalize Autofac Module</description>
     <releaseNotes>added .net standard 2.0 target</releaseNotes>
-    <copyright>Copyright 2013-2020</copyright>
+    <copyright>Copyright 2013-2021</copyright>
     <tags>etl</tags>
     <dependencies>
       <group targetFramework="net462">
         <dependency id="Transformalize.Container.Autofac" version="0.8.35-beta" />
-        <dependency id="Transformalize.Provider.GeoJson" version="0.8.27-beta" />
+        <dependency id="Transformalize.Provider.GeoJson" version="0.8.30-beta" />
       </group>
       <group targetFramework="netstandard2.0">
         <dependency id="Transformalize.Container.Autofac" version="0.8.35-beta" />
-        <dependency id="Transformalize.Provider.GeoJson" version="0.8.27-beta" />
+        <dependency id="Transformalize.Provider.GeoJson" version="0.8.30-beta" />
       </group>
     </dependencies>
   </metadata>

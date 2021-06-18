@@ -77,79 +77,77 @@ namespace Transformalize.Providers.GeoJson {
       public void Write(IEnumerable<IRow> rows) {
 
          if (Equals(_context.Process.Entities.First(), _context.Entity)) {
-            _jw.WriteStartObjectAsync(); //root
+            _jw.WriteStartObjectAsync().ConfigureAwait(false); //root
 
-            _jw.WritePropertyNameAsync("type");
-            _jw.WriteValueAsync("FeatureCollection");
+            _jw.WritePropertyNameAsync("type").ConfigureAwait(false);
+            _jw.WriteValueAsync("FeatureCollection").ConfigureAwait(false);
 
-            _jw.WritePropertyNameAsync("features");
-            _jw.WriteStartArrayAsync();  //features
+            _jw.WritePropertyNameAsync("features").ConfigureAwait(false);
+            _jw.WriteStartArrayAsync().ConfigureAwait(false);  //features
          }
 
          foreach (var row in rows) {
 
-            _jw.WriteStartObjectAsync(); //feature
-            _jw.WritePropertyNameAsync("type");
-            _jw.WriteValueAsync("Feature");
-            _jw.WritePropertyNameAsync("geometry");
-            _jw.WriteStartObjectAsync(); //geometry 
-            _jw.WritePropertyNameAsync("type");
-            _jw.WriteValueAsync("Point");
+            _jw.WriteStartObjectAsync().ConfigureAwait(false); //feature
+            _jw.WritePropertyNameAsync("type").ConfigureAwait(false);
+            _jw.WriteValueAsync("Feature").ConfigureAwait(false);
+            _jw.WritePropertyNameAsync("geometry").ConfigureAwait(false);
+            _jw.WriteStartObjectAsync().ConfigureAwait(false); //geometry 
+            _jw.WritePropertyNameAsync("type").ConfigureAwait(false);
+            _jw.WriteValueAsync("Point").ConfigureAwait(false);
 
-            _jw.WritePropertyNameAsync("coordinates");
-            _jw.WriteStartArrayAsync();
-            _jw.WriteValueAsync(row[_longitudeField]);
-            _jw.WriteValueAsync(row[_latitudeField]);
-            _jw.WriteEndArrayAsync();
+            _jw.WritePropertyNameAsync("coordinates").ConfigureAwait(false);
+            _jw.WriteStartArrayAsync().ConfigureAwait(false);
+            _jw.WriteValueAsync(row[_longitudeField]).ConfigureAwait(false);
+            _jw.WriteValueAsync(row[_latitudeField]).ConfigureAwait(false);
+            _jw.WriteEndArrayAsync().ConfigureAwait(false);
 
-            _jw.WriteEndObjectAsync(); //geometry
+            _jw.WriteEndObjectAsync().ConfigureAwait(false); //geometry
 
-            _jw.WritePropertyNameAsync("properties");
-            _jw.WriteStartObjectAsync(); //properties
+            _jw.WritePropertyNameAsync("properties").ConfigureAwait(false);
+            _jw.WriteStartObjectAsync().ConfigureAwait(false); //properties
 
             if (_hasDescription) {
-               _jw.WritePropertyNameAsync("description");
-               _jw.WriteValueAsync(row[_descriptionField]);
+               _jw.WritePropertyNameAsync("description").ConfigureAwait(false);
+               _jw.WriteValueAsync(row[_descriptionField]).ConfigureAwait(false);
             }
 
             if (_hasBatchValue) {
-               _jw.WritePropertyNameAsync("batch-value");
-               _jw.WriteValueAsync(row[_batchField]);
+               _jw.WritePropertyNameAsync("batch-value").ConfigureAwait(false);
+               _jw.WriteValueAsync(row[_batchField]).ConfigureAwait(false);
             }
 
             if (_hasColor) {
-               _jw.WritePropertyNameAsync("marker-color");
-               _jw.WriteValueAsync(row[_colorField]);
+               _jw.WritePropertyNameAsync("marker-color").ConfigureAwait(false);
+               _jw.WriteValueAsync(row[_colorField]).ConfigureAwait(false);
             }
 
             if (_hasSymbol) {
                var symbol = row[_symbolField].ToString();
-               _jw.WritePropertyNameAsync("marker-symbol");
-               _jw.WriteValueAsync(symbol);
+               _jw.WritePropertyNameAsync("marker-symbol").ConfigureAwait(false);
+               _jw.WriteValueAsync(symbol).ConfigureAwait(false);
             }
 
             foreach (var field in _properties) {
                var name = field.Label == string.Empty ? field.Alias : field.Label;
-               _jw.WritePropertyNameAsync(name);
-               _jw.WriteValueAsync(row[field]);
+               _jw.WritePropertyNameAsync(name).ConfigureAwait(false);
+               _jw.WriteValueAsync(row[field]).ConfigureAwait(false);
             }
 
-            _jw.WriteEndObjectAsync(); //properties
+            _jw.WriteEndObjectAsync().ConfigureAwait(false); //properties
 
-            _jw.WriteEndObjectAsync(); //feature
+            _jw.WriteEndObjectAsync().ConfigureAwait(false); //feature
 
             _context.Entity.Inserts++;
 
-            if (_context.Entity.Inserts % 50 == 0) {
-               _jw.FlushAsync();
-            }
+            _jw.FlushAsync().ConfigureAwait(false);
          }
          if (Equals(_context.Process.Entities.Last(), _context.Entity)) {
-            _jw.WriteEndArrayAsync(); //features
-            _jw.WriteEndObjectAsync(); //root
+            _jw.WriteEndArrayAsync().ConfigureAwait(false); //features
+            _jw.WriteEndObjectAsync().ConfigureAwait(false); //root
          }
 
-         _jw.FlushAsync();
+         _jw.FlushAsync().ConfigureAwait(false);
 
       }
    }

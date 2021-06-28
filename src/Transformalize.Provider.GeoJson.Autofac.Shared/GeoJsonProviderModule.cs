@@ -25,7 +25,7 @@ using Transformalize.Containers.Autofac;
 using Transformalize.Context;
 using Transformalize.Contracts;
 using Transformalize.Nulls;
-using System.Text.Json;
+using System.IO;
 
 namespace Transformalize.Providers.GeoJson.Autofac {
 
@@ -35,7 +35,7 @@ namespace Transformalize.Providers.GeoJson.Autofac {
    public class GeoJsonProviderModule : Module {
       
       private Process _process;
-      private readonly Stream _stream;
+      private readonly StreamWriter _streamWriter;
       private const string GeoJson = "geojson";
 
       public bool UseAsyncMethods { get; set; }
@@ -46,8 +46,8 @@ namespace Transformalize.Providers.GeoJson.Autofac {
       /// Create a GeoJson module with an optional stream to write to
       /// </summary>
       /// <param name="stream"></param>
-      public GeoJsonProviderModule(Stream stream = null) {
-         _stream = stream;
+      public GeoJsonProviderModule(StreamWriter streamWriter = null) {
+         _streamWriter = streamWriter;
       }
 
       /// <summary>
@@ -55,9 +55,9 @@ namespace Transformalize.Providers.GeoJson.Autofac {
       /// </summary>
       /// <param name="process"></param>
       /// <param name="stream"></param>
-      public GeoJsonProviderModule(Process process, Stream stream = null) {
+      public GeoJsonProviderModule(Process process, StreamWriter streamWriter = null) {
          _process = process;
-         _stream = stream;
+         _streamWriter = streamWriter;
       }
 
       /// <summary>
@@ -94,7 +94,7 @@ namespace Transformalize.Providers.GeoJson.Autofac {
          if (outputConnection != null) {
             if (outputConnection.Provider == GeoJson) {
                if (outputConnection.Stream) {
-                  var writer = new JsonTextWriter(new StreamWriter(_stream));
+                  var writer = new JsonTextWriter(_streamWriter);
 
                   //var options = new JsonWriterOptions() { Indented = outputConnection.Format == "json" };
                   //var writer = new Utf8JsonWriter(_stream, options);

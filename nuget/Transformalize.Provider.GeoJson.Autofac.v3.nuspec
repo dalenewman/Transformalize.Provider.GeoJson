@@ -2,27 +2,26 @@
 <package>
   <metadata>
     <id>Transformalize.Provider.GeoJson.Autofac.v3</id>
-    <version>0.8.30-beta</version>
+    <version>0.10.0-beta</version>
     <title>GeoJson for Transformalize Autofac Module</title>
     <authors>Dale Newman</authors>
     <owners>Dale Newman</owners>
     <projectUrl>https://github.com/dalenewman/Transformalize</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>GeoJson for Transformalize Autofac Module</description>
-    <releaseNotes>
-    </releaseNotes>
-    <copyright>Copyright 2013-2021</copyright>
+    <releaseNotes>gen maint</releaseNotes>
+    <copyright>Copyright © 2013-2022</copyright>
     <tags>etl</tags>
     <dependencies>
       <group targetFramework="net462">
-        <dependency id="Transformalize.Container.Autofac.v3" version="0.8.35-beta" />
-        <dependency id="Transformalize.Provider.GeoJson" version="0.8.30-beta" />
+        <dependency id="Transformalize.Container.Autofac.v3" version="0.10.0-beta" />
+        <dependency id="Transformalize.Provider.GeoJson" version="0.10.0-beta" />
       </group>
     </dependencies>
   </metadata>
   <files>
-    <file src="..\src\Transformalize.Provider.GeoJson.Autofac.v3\bin\Debug\Transformalize.Provider.GeoJson.Autofac.v3.dll" target="lib\net462\Transformalize.Provider.GeoJson.Autofac.v3.dll" />
-    <file src="..\src\Transformalize.Provider.GeoJson.Autofac.v3\bin\Debug\Transformalize.Provider.GeoJson.Autofac.v3.pdb" target="lib\net462\Transformalize.Provider.GeoJson.Autofac.v3.pdb" />
-    <!--<file src="..\src\Transformalize.Provider.GeoJson.Autofac.v3\bin\Debug\Transformalize.Provider.GeoJson.Autofac.v3.xml" target="lib\net462\Transformalize.Provider.GeoJson.Autofac.v3.xml" />-->
+    <file src="..\src\Transformalize.Provider.GeoJson.Autofac.v3\bin\Release\Transformalize.Provider.GeoJson.Autofac.v3.dll" target="lib\net462\Transformalize.Provider.GeoJson.Autofac.v3.dll" />
+    <!--<file src="..\src\Transformalize.Provider.GeoJson.Autofac.v3\bin\Release\Transformalize.Provider.GeoJson.Autofac.v3.pdb" target="lib\net462\Transformalize.Provider.GeoJson.Autofac.v3.pdb" />-->
+    <!--<file src="..\src\Transformalize.Provider.GeoJson.Autofac.v3\bin\Release\Transformalize.Provider.GeoJson.Autofac.v3.xml" target="lib\net462\Transformalize.Provider.GeoJson.Autofac.v3.xml" />-->
   </files>
 </package>

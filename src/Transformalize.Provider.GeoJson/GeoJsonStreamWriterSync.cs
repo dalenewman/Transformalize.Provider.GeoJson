@@ -39,6 +39,7 @@ namespace Transformalize.Providers.GeoJson {
       private readonly Field _symbolField;
       private readonly Field[] _propertyFields;
       private readonly bool _hasStyle;
+      private readonly IContext _context;
       private readonly Dictionary<string, string> _scales = new Dictionary<string, string> {
             {"0.75","small"},
             {"1.0","medium"},
@@ -53,6 +54,7 @@ namespace Transformalize.Providers.GeoJson {
       /// <param name="stream">whatever stream you want to write to</param>
       public GeoJsonStreamWriterSync(IContext context, Stream stream) {
          _stream = stream;
+         _context = context;
          var fields = context.GetAllEntityFields().ToArray();
 
          _latitudeField = fields.FirstOrDefault(f => f.Alias.ToLower() == "latitude") ?? fields.FirstOrDefault(f => f.Alias.ToLower().StartsWith("lat"));
@@ -160,6 +162,7 @@ namespace Transformalize.Providers.GeoJson {
             jw.WriteEndObject(); //properties
 
             jw.WriteEndObject(); //feature
+            _context.Entity.Inserts++;
          }
 
          jw.WriteEndArray(); //features

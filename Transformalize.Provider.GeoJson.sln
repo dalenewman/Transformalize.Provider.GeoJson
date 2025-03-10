@@ -1,12 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29001.49
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35728.132 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transformalize.Provider.GeoJson", "src\Transformalize.Provider.GeoJson\Transformalize.Provider.GeoJson.csproj", "{09508A42-8F76-4AAB-84CA-CCD8653CEB96}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transformalize.Provider.GeoJson.Autofac", "src\Transformalize.Provider.GeoJson.Autofac\Transformalize.Provider.GeoJson.Autofac.csproj", "{5251FE45-E09A-4996-BE2A-67EA98FAFF61}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{85FA0C69-A760-4DA4-BBDA-405440FAFD78}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
@@ -17,72 +13,39 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{A0465D20
 		nuget\myget.bat = nuget\myget.bat
 		nuget\nuget.bat = nuget\nuget.bat
 		nuget\Transformalize.Provider.GeoJson.Autofac.nuspec = nuget\Transformalize.Provider.GeoJson.Autofac.nuspec
-		nuget\Transformalize.Provider.GeoJson.Autofac.v3.nuspec = nuget\Transformalize.Provider.GeoJson.Autofac.v3.nuspec
 		nuget\Transformalize.Provider.GeoJson.nuspec = nuget\Transformalize.Provider.GeoJson.nuspec
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transformalize.Provider.GeoJson.Autofac.v3", "src\Transformalize.Provider.GeoJson.Autofac.v3\Transformalize.Provider.GeoJson.Autofac.v3.csproj", "{88900CE6-C904-40FF-ADD4-E60A014EF1AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transformalize.Provider.GeoJson", "src\Transformalize.Provider.GeoJson\Transformalize.Provider.GeoJson.csproj", "{D5C9DA5D-687D-4647-A7EC-E7A4735224B7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Provider", "Provider", "{B1DEC6E4-4B35-478B-A6EC-88ED51FF87C6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transformalize.Provider.GeoJson.Autofac", "src\Transformalize.Provider.GeoJson.Autofac\Transformalize.Provider.GeoJson.Autofac.csproj", "{AA5B1E5B-B399-4751-8FEF-6567725D5B74}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Provider.Autofac", "Provider.Autofac", "{BA9102A2-D96F-4269-B0C0-6FAA897CBB76}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Transformalize.Provider.GeoJson.Shared", "src\Transformalize.Provider.GeoJson.Shared\Transformalize.Provider.GeoJson.Shared.shproj", "{F247A024-1AF5-4F86-953C-C49A15A592E7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transformalize.Provider.GeoJson.Standard.2.0", "src\Transformalize.Provider.GeoJson.Standard.2.0\Transformalize.Provider.GeoJson.Standard.2.0.csproj", "{F3BF0324-8C89-4B82-BFFC-55D0BB2E2766}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Transformalize.Provider.GeoJson.Autofac.Shared", "src\Transformalize.Provider.GeoJson.Autofac.Shared\Transformalize.Provider.GeoJson.Autofac.Shared.shproj", "{775863D7-172E-4F1F-84B9-1641ACE2EB0E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transformalize.Provider.GeoJson.Autofac.Standard.2.0", "src\Transformalize.Provider.GeoJson.Autofac.Standard.2.0\Transformalize.Provider.GeoJson.Autofac.Standard.2.0.csproj", "{47787D1B-2C1D-45E8-99D3-FD08F2F1D172}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "src\Test\Test.csproj", "{BD03DEED-8FC9-464E-9FBF-9C29B1BF95A0}"
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		src\Transformalize.Provider.GeoJson.Shared\Transformalize.Provider.GeoJson.Shared.projitems*{09508a42-8f76-4aab-84ca-ccd8653ceb96}*SharedItemsImports = 4
-		src\Transformalize.Provider.GeoJson.Autofac.Shared\Transformalize.Provider.GeoJson.Autofac.Shared.projitems*{47787d1b-2c1d-45e8-99d3-fd08f2f1d172}*SharedItemsImports = 5
-		src\Transformalize.Provider.GeoJson.Autofac.Shared\Transformalize.Provider.GeoJson.Autofac.Shared.projitems*{5251fe45-e09a-4996-be2a-67ea98faff61}*SharedItemsImports = 4
-		src\Transformalize.Provider.GeoJson.Autofac.Shared\Transformalize.Provider.GeoJson.Autofac.Shared.projitems*{775863d7-172e-4f1f-84b9-1641ace2eb0e}*SharedItemsImports = 13
-		src\Transformalize.Provider.GeoJson.Autofac.Shared\Transformalize.Provider.GeoJson.Autofac.Shared.projitems*{88900ce6-c904-40ff-add4-e60a014ef1ac}*SharedItemsImports = 4
-		src\Transformalize.Provider.GeoJson.Shared\Transformalize.Provider.GeoJson.Shared.projitems*{f247a024-1af5-4f86-953c-c49a15a592e7}*SharedItemsImports = 13
-		src\Transformalize.Provider.GeoJson.Shared\Transformalize.Provider.GeoJson.Shared.projitems*{f3bf0324-8c89-4b82-bffc-55d0bb2e2766}*SharedItemsImports = 5
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{09508A42-8F76-4AAB-84CA-CCD8653CEB96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{09508A42-8F76-4AAB-84CA-CCD8653CEB96}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{09508A42-8F76-4AAB-84CA-CCD8653CEB96}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{09508A42-8F76-4AAB-84CA-CCD8653CEB96}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5251FE45-E09A-4996-BE2A-67EA98FAFF61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5251FE45-E09A-4996-BE2A-67EA98FAFF61}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5251FE45-E09A-4996-BE2A-67EA98FAFF61}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5251FE45-E09A-4996-BE2A-67EA98FAFF61}.Release|Any CPU.Build.0 = Release|Any CPU
-		{88900CE6-C904-40FF-ADD4-E60A014EF1AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{88900CE6-C904-40FF-ADD4-E60A014EF1AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{88900CE6-C904-40FF-ADD4-E60A014EF1AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{88900CE6-C904-40FF-ADD4-E60A014EF1AC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F3BF0324-8C89-4B82-BFFC-55D0BB2E2766}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F3BF0324-8C89-4B82-BFFC-55D0BB2E2766}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F3BF0324-8C89-4B82-BFFC-55D0BB2E2766}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F3BF0324-8C89-4B82-BFFC-55D0BB2E2766}.Release|Any CPU.Build.0 = Release|Any CPU
-		{47787D1B-2C1D-45E8-99D3-FD08F2F1D172}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{47787D1B-2C1D-45E8-99D3-FD08F2F1D172}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{47787D1B-2C1D-45E8-99D3-FD08F2F1D172}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{47787D1B-2C1D-45E8-99D3-FD08F2F1D172}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5C9DA5D-687D-4647-A7EC-E7A4735224B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5C9DA5D-687D-4647-A7EC-E7A4735224B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5C9DA5D-687D-4647-A7EC-E7A4735224B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5C9DA5D-687D-4647-A7EC-E7A4735224B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA5B1E5B-B399-4751-8FEF-6567725D5B74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA5B1E5B-B399-4751-8FEF-6567725D5B74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA5B1E5B-B399-4751-8FEF-6567725D5B74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA5B1E5B-B399-4751-8FEF-6567725D5B74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD03DEED-8FC9-464E-9FBF-9C29B1BF95A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD03DEED-8FC9-464E-9FBF-9C29B1BF95A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD03DEED-8FC9-464E-9FBF-9C29B1BF95A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD03DEED-8FC9-464E-9FBF-9C29B1BF95A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{09508A42-8F76-4AAB-84CA-CCD8653CEB96} = {B1DEC6E4-4B35-478B-A6EC-88ED51FF87C6}
-		{5251FE45-E09A-4996-BE2A-67EA98FAFF61} = {BA9102A2-D96F-4269-B0C0-6FAA897CBB76}
 		{A0465D20-7758-413F-A911-585923A61160} = {85FA0C69-A760-4DA4-BBDA-405440FAFD78}
-		{88900CE6-C904-40FF-ADD4-E60A014EF1AC} = {BA9102A2-D96F-4269-B0C0-6FAA897CBB76}
-		{F247A024-1AF5-4F86-953C-C49A15A592E7} = {B1DEC6E4-4B35-478B-A6EC-88ED51FF87C6}
-		{F3BF0324-8C89-4B82-BFFC-55D0BB2E2766} = {B1DEC6E4-4B35-478B-A6EC-88ED51FF87C6}
-		{775863D7-172E-4F1F-84B9-1641ACE2EB0E} = {BA9102A2-D96F-4269-B0C0-6FAA897CBB76}
-		{47787D1B-2C1D-45E8-99D3-FD08F2F1D172} = {BA9102A2-D96F-4269-B0C0-6FAA897CBB76}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {178081F6-A699-4B47-9630-78730739C957}

@@ -30,6 +30,7 @@ namespace Transformalize.Providers.GeoJson {
    public class GeoJsonMinimalEntityStreamWriterSync : IWrite {
 
       private readonly Stream _stream;
+      private readonly IContext _context;
       private readonly Field _latitudeField;
       private readonly Field _longitudeField;
       private readonly Field _colorField;
@@ -50,6 +51,7 @@ namespace Transformalize.Providers.GeoJson {
       public GeoJsonMinimalEntityStreamWriterSync(IContext context, Stream stream) {
 
          _stream = stream;
+         _context = context;
          var fields = context.GetAllEntityFields().ToArray();
 
          _latitudeField = fields.FirstOrDefault(f => f.Alias.ToLower() == "latitude") ?? fields.FirstOrDefault(f => f.Alias.ToLower().StartsWith("lat"));
@@ -131,8 +133,8 @@ namespace Transformalize.Providers.GeoJson {
             jw.WriteEndObject(); //properties
 
             jw.WriteEndObject(); //feature
+            _context.Entity.Inserts++;
          }
-
 
          jw.WriteEndArray(); //features
 
